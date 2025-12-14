@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbershop Website Designs - Man About Town & New London Barbers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            min-height: 100vh;
+        }
+        .design-card {
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+        }
+        .design-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+        .design-card:hover .view-btn {
+            background: linear-gradient(135deg, #d4af37 0%, #f2d06b 100%);
+            transform: scale(1.05);
+        }
+        .view-btn {
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #c9a961 0%, #d4af37 100%);
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <div class="container mx-auto px-4 py-12 md:py-20">
+        <!-- Header -->
+        <div class="text-center mb-16 fade-in-up">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">
+                Man About Town & New London Barbers
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-2">
+                Website Design Mockups
+            </p>
+            <p class="text-gray-400">
+                Click on any design below to view the full website
+            </p>
+        </div>
+
+        <!-- Design Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <!-- Design 1 -->
+            <div class="design-card rounded-2xl overflow-hidden border border-gray-700 fade-in-up" style="animation-delay: 0.1s;">
+                <div class="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-black opacity-40"></div>
+                    <div class="relative text-center px-6">
+                        <div class="text-6xl mb-4">🏛️</div>
+                        <h3 class="text-2xl font-bold text-white">Classic Dark Hero</h3>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-white mb-3">Design 1</h3>
+                    <p class="text-gray-300 mb-4">
+                        Classic dark aesthetic with hero carousel, inspired by Brooks Barbershops. Features auto-playing carousel, grid layouts, and sophisticated dark color scheme.
+                    </p>
+                    <ul class="text-sm text-gray-400 mb-6 space-y-1">
+                        <li>✓ Hero carousel with auto-play</li>
+                        <li>✓ Premium typography (Playfair Display)</li>
+                        <li>✓ Smooth animations & transitions</li>
+                        <li>✓ Professional barber profiles</li>
+                    </ul>
+                    <a href="design1/index.html" class="view-btn block text-center text-black font-semibold py-3 px-6 rounded-lg">
+                        View Design 1
+                    </a>
+                </div>
+            </div>
+
+            <!-- Design 2 -->
+            <div class="design-card rounded-2xl overflow-hidden border border-gray-700 fade-in-up" style="animation-delay: 0.2s;">
+                <div class="aspect-video bg-gradient-to-br from-blue-900 to-gray-900 flex items-center justify-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-black opacity-40"></div>
+                    <div class="relative text-center px-6">
+                        <div class="text-6xl mb-4">⚡</div>
+                        <h3 class="text-2xl font-bold text-white">Split-Screen Dual</h3>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-white mb-3">Design 2</h3>
+                    <p class="text-gray-300 mb-4">
+                        Modern split-screen design emphasizing both locations with distinct visual identities. Navy/charcoal with gold and bronze accents.
+                    </p>
+                    <ul class="text-sm text-gray-400 mb-6 space-y-1">
+                        <li>✓ Dual location split-screen hero</li>
+                        <li>✓ Gold & bronze accent colors</li>
+                        <li>✓ Location-coded barber tags</li>
+                        <li>✓ Distinct yet cohesive branding</li>
+                    </ul>
+                    <a href="design2/index.html" class="view-btn block text-center text-black font-semibold py-3 px-6 rounded-lg">
+                        View Design 2
+                    </a>
+                </div>
+            </div>
+
+            <!-- Design 3 -->
+            <div class="design-card rounded-2xl overflow-hidden border border-gray-700 fade-in-up" style="animation-delay: 0.3s;">
+                <div class="aspect-video bg-gradient-to-br from-white to-gray-200 flex items-center justify-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-transparent to-black opacity-20"></div>
+                    <div class="relative text-center px-6">
+                        <div class="text-6xl mb-4">📐</div>
+                        <h3 class="text-2xl font-bold text-gray-900">Minimal Bold Type</h3>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-white mb-3">Design 3</h3>
+                    <p class="text-gray-300 mb-4">
+                        Modern minimalist with oversized typography and editorial style. Clean white space balanced with dark sections and burgundy accents.
+                    </p>
+                    <ul class="text-sm text-gray-400 mb-6 space-y-1">
+                        <li>✓ Bold, oversized typography</li>
+                        <li>✓ Editorial-style layout</li>
+                        <li>✓ Deep burgundy accent color</li>
+                        <li>✓ Contemporary minimalism</li>
+                    </ul>
+                    <a href="design3/index.html" class="view-btn block text-center text-black font-semibold py-3 px-6 rounded-lg">
+                        View Design 3
+                    </a>
+                </div>
+            </div>
+
+            <!-- Design 4 -->
+            <div class="design-card rounded-2xl overflow-hidden border border-gray-700 fade-in-up" style="animation-delay: 0.4s;">
+                <div class="aspect-video bg-gradient-to-br from-amber-900 to-yellow-900 flex items-center justify-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-black opacity-30"></div>
+                    <div class="relative text-center px-6">
+                        <div class="text-6xl mb-4">💈</div>
+                        <h3 class="text-2xl font-bold text-white">Vintage Warmth</h3>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-white mb-3">Design 4</h3>
+                    <p class="text-gray-300 mb-4">
+                        Warm vintage barbershop aesthetic with deep browns, creams, and copper accents. Classic American barbershop meets modern web design.
+                    </p>
+                    <ul class="text-sm text-gray-400 mb-6 space-y-1">
+                        <li>✓ Vintage-framed elements</li>
+                        <li>✓ Warm brown & copper palette</li>
+                        <li>✓ Traditional price board styling</li>
+                        <li>✓ Heritage-focused design</li>
+                    </ul>
+                    <a href="design4/index.html" class="view-btn block text-center text-black font-semibold py-3 px-6 rounded-lg">
+                        View Design 4
+                    </a>
+                </div>
+            </div>
+
+            <!-- Design 5 -->
+            <div class="design-card rounded-2xl overflow-hidden border border-gray-700 fade-in-up" style="animation-delay: 0.5s;">
+                <div class="aspect-video bg-gradient-to-br from-black to-gray-800 flex items-center justify-center relative overflow-hidden">
+                    <div class="absolute inset-0">
+                        <div class="absolute top-0 right-0 w-96 h-96 bg-yellow-600 opacity-10 rounded-full blur-3xl"></div>
+                    </div>
+                    <div class="relative text-center px-6">
+                        <div class="text-6xl mb-4">🎯</div>
+                        <h3 class="text-2xl font-bold text-white">Contemporary Pro</h3>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-white mb-3">Design 5</h3>
+                    <p class="text-gray-300 mb-4">
+                        Contemporary full-screen sections with fixed side navigation. High-end, sleek aesthetic with gradient accents and immersive experience.
+                    </p>
+                    <ul class="text-sm text-gray-400 mb-6 space-y-1">
+                        <li>✓ Full-screen sections (100vh)</li>
+                        <li>✓ Fixed side dot navigation</li>
+                        <li>✓ CSS parallax effects</li>
+                        <li>✓ Premium gold accents</li>
+                    </ul>
+                    <a href="design5/index.html" class="view-btn block text-center text-black font-semibold py-3 px-6 rounded-lg">
+                        View Design 5
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-16 text-gray-400 fade-in-up" style="animation-delay: 0.6s;">
+            <p class="text-sm">
+                All designs created with HTML, Tailwind CSS, and minimal JavaScript
+            </p>
+            <p class="text-xs mt-2">
+                Professional mockups for Man About Town & New London Barbers
+            </p>
+        </div>
+    </div>
+</body>
+</html>

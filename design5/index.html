@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Man About Town & New London Barbers | Premium Barbershop in Chelmsford</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#C9A961',
+                        dark: '#0a0a0a',
+                        darker: '#050505',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .section-full {
+            min-height: 100vh;
+            height: 100vh;
+        }
+
+        @media (max-width: 768px) {
+            .section-full {
+                min-height: auto;
+                height: auto;
+            }
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+            position: relative;
+        }
+
+        .hero-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(201, 169, 97, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(201, 169, 97, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .parallax-bg {
+            background-image: url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        @media (max-width: 768px) {
+            .parallax-bg {
+                background-attachment: scroll;
+            }
+        }
+
+        .side-nav {
+            position: fixed;
+            right: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+
+        .side-nav a {
+            display: block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .side-nav a:hover, .side-nav a.active {
+            background: #C9A961;
+            transform: scale(1.3);
+        }
+
+        .side-nav a::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 4px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            font-size: 12px;
+        }
+
+        .side-nav a:hover::before {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .side-nav {
+                display: none;
+            }
+        }
+
+        .mobile-nav {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-nav {
+                display: block;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                background: rgba(10, 10, 10, 0.95);
+                backdrop-filter: blur(10px);
+                z-index: 1000;
+                padding: 15px 20px;
+            }
+
+            .mobile-nav-content {
+                display: none;
+                padding-top: 60px;
+            }
+
+            .mobile-nav-content.active {
+                display: block;
+            }
+
+            .mobile-nav a {
+                display: block;
+                padding: 12px 20px;
+                color: white;
+                text-decoration: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            main {
+                padding-top: 60px;
+            }
+        }
+
+        .gradient-border {
+            position: relative;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+        }
+
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: inherit;
+            padding: 2px;
+            background: linear-gradient(135deg, #C9A961 0%, #a88a4d 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .barber-card {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            transition: all 0.4s ease;
+        }
+
+        .barber-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(201, 169, 97, 0.3);
+        }
+
+        .barber-card img {
+            transition: all 0.4s ease;
+            filter: grayscale(30%);
+        }
+
+        .barber-card:hover img {
+            transform: scale(1.1);
+            filter: grayscale(0%);
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(10, 10, 10, 0.9) 100%);
+            border: 1px solid rgba(201, 169, 97, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: #C9A961;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(201, 169, 97, 0.2);
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(201, 169, 97, 0.8) 0%, rgba(10, 10, 10, 0.8) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-item img {
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.2);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #C9A961 0%, #a88a4d 100%);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(201, 169, 97, 0.3);
+        }
+
+        .cta-button:hover {
+            box-shadow: 0 15px 40px rgba(201, 169, 97, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .location-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            border: 1px solid rgba(201, 169, 97, 0.3);
+        }
+
+        .map-container {
+            filter: grayscale(100%) brightness(0.8);
+            transition: all 0.3s ease;
+        }
+
+        .map-container:hover {
+            filter: grayscale(0%) brightness(1);
+        }
+    </style>
+</head>
+<body class="bg-darker text-white overflow-x-hidden">
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+        <div class="flex justify-between items-center">
+            <div class="text-primary font-bold text-xl">MAT & NLB</div>
+            <button onclick="toggleMobileNav()" class="text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        <div class="mobile-nav-content" id="mobileNavContent">
+            <a href="#hero" onclick="toggleMobileNav()">Home</a>
+            <a href="#about" onclick="toggleMobileNav()">About</a>
+            <a href="#services" onclick="toggleMobileNav()">Services</a>
+            <a href="#barbers" onclick="toggleMobileNav()">Our Team</a>
+            <a href="#locations" onclick="toggleMobileNav()">Locations</a>
+            <a href="#gallery" onclick="toggleMobileNav()">Gallery</a>
+            <a href="#contact" onclick="toggleMobileNav()">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Side Navigation -->
+    <div class="side-nav">
+        <a href="#hero" data-tooltip="Home" class="nav-dot active"></a>
+        <a href="#about" data-tooltip="About" class="nav-dot"></a>
+        <a href="#services" data-tooltip="Services" class="nav-dot"></a>
+        <a href="#barbers" data-tooltip="Our Team" class="nav-dot"></a>
+        <a href="#locations" data-tooltip="Locations" class="nav-dot"></a>
+        <a href="#gallery" data-tooltip="Gallery" class="nav-dot"></a>
+        <a href="#contact" data-tooltip="Contact" class="nav-dot"></a>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="section-full hero-gradient flex items-center justify-center relative overflow-hidden">
+            <div class="parallax-bg absolute inset-0 opacity-20"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-dark"></div>
+
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <h1 class="text-6xl md:text-8xl font-bold mb-6 text-white leading-tight">
+                    Where Style<br/>
+                    <span class="text-primary">Meets Sophistication</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto font-light">
+                    Experience premium grooming at Man About Town & New London Barbers
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <a href="#booking" class="cta-button px-10 py-4 text-lg font-semibold text-white rounded-full inline-block">
+                        Book Appointment
+                    </a>
+                    <a href="#services" class="px-10 py-4 text-lg font-semibold text-white border-2 border-white rounded-full inline-block hover:bg-white hover:text-dark transition-all">
+                        View Services
+                    </a>
+                </div>
+            </div>
+
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section-full flex items-center bg-gradient-to-br from-dark via-darker to-dark relative">
+            <div class="absolute inset-0 opacity-5">
+                <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23C9A961\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+            </div>
+
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="grid md:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <h2 class="text-5xl md:text-6xl font-bold mb-8 text-white">
+                            Crafting Excellence<br/>
+                            <span class="text-primary">Since Day One</span>
+                        </h2>
+                        <div class="space-y-6 text-gray-300 text-lg leading-relaxed">
+                            <p>
+                                At Man About Town and New London Barbers, we've redefined the barbershop experience.
+                                Our commitment to excellence, attention to detail, and passion for the craft sets us apart.
+                            </p>
+                            <p>
+                                With two premier locations in Chelmsford, we bring you the perfect blend of traditional
+                                barbering techniques and contemporary style. Our master barbers are dedicated to ensuring
+                                every client leaves looking sharp and feeling confident.
+                            </p>
+                            <p>
+                                Step into our world where classic meets contemporary, and experience grooming elevated
+                                to an art form.
+                            </p>
+                        </div>
+                        <div class="grid grid-cols-3 gap-8 mt-12">
+                            <div class="text-center">
+                                <div class="text-4xl font-bold text-primary mb-2">2</div>
+                                <div class="text-sm text-gray-400 uppercase tracking-wider">Locations</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-4xl font-bold text-primary mb-2">8</div>
+                                <div class="text-sm text-gray-400 uppercase tracking-wider">Master Barbers</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-4xl font-bold text-primary mb-2">5000+</div>
+                                <div class="text-sm text-gray-400 uppercase tracking-wider">Happy Clients</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="space-y-6">
+                                <div class="gradient-border rounded-lg overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&q=80" alt="Barbershop interior" class="w-full h-64 object-cover">
+                                </div>
+                                <div class="gradient-border rounded-lg overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400&q=80" alt="Barber tools" class="w-full h-48 object-cover">
+                                </div>
+                            </div>
+                            <div class="space-y-6 mt-12">
+                                <div class="gradient-border rounded-lg overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&q=80" alt="Haircut in progress" class="w-full h-48 object-cover">
+                                </div>
+                                <div class="gradient-border rounded-lg overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=400&q=80" alt="Premium products" class="w-full h-64 object-cover">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Section -->
+        <section id="booking" class="section-full flex items-center bg-gradient-to-br from-darker via-dark to-darker relative">
+            <div class="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent"></div>
+
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <h2 class="text-5xl md:text-6xl font-bold mb-6 text-white">
+                    Book Your <span class="text-primary">Appointment</span>
+                </h2>
+                <p class="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
+                    Reserve your spot at either of our premium locations. Walk-ins welcome, but booking ahead ensures your preferred time slot.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
+                    <div class="gradient-border rounded-2xl p-8 text-left">
+                        <h3 class="text-2xl font-bold text-primary mb-4">Man About Town</h3>
+                        <p class="text-gray-400 mb-6">62 New London Rd, Chelmsford, CM2 0PA</p>
+                        <a href="https://iframe-678.nearcut.com/book/shops/NKOYJS/" target="_blank" class="cta-button px-8 py-4 text-lg font-semibold text-white rounded-full inline-block w-full text-center">
+                            Book at Man About Town
+                        </a>
+                    </div>
+
+                    <div class="gradient-border rounded-2xl p-8 text-left">
+                        <h3 class="text-2xl font-bold text-primary mb-4">New London Barbers</h3>
+                        <p class="text-gray-400 mb-6">Coming Soon - Premium Location</p>
+                        <a href="https://iframe-678.nearcut.com/book/shops/NKOYJS/" target="_blank" class="cta-button px-8 py-4 text-lg font-semibold text-white rounded-full inline-block w-full text-center">
+                            Book at New London Barbers
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-dark/50 backdrop-blur-sm border border-primary/20 rounded-2xl p-8 max-w-4xl mx-auto">
+                    <h4 class="text-2xl font-bold text-white mb-6">Opening Hours</h4>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                        <div>
+                            <div class="text-primary font-semibold mb-2">Monday - Wednesday</div>
+                            <div class="text-gray-300">9:00 AM - 6:00 PM</div>
+                        </div>
+                        <div>
+                            <div class="text-primary font-semibold mb-2">Thursday</div>
+                            <div class="text-gray-300">9:00 AM - 8:00 PM</div>
+                        </div>
+                        <div>
+                            <div class="text-primary font-semibold mb-2">Friday - Saturday</div>
+                            <div class="text-gray-300">9:00 AM - 6:00 PM</div>
+                        </div>
+                        <div>
+                            <div class="text-primary font-semibold mb-2">Sunday</div>
+                            <div class="text-gray-300">Closed</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section-full flex items-center bg-dark relative py-20 md:py-0">
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl md:text-6xl font-bold mb-6 text-white">
+                        Our <span class="text-primary">Services</span>
+                    </h2>
+                    <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                        Premium grooming services tailored to your individual style and preferences
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <div class="service-card rounded-2xl p-8 text-center">
+                        <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Signature Haircut</h3>
+                        <p class="text-gray-400 mb-6">Precision cut tailored to your face shape and style preferences</p>
+                        <div class="text-3xl font-bold text-primary mb-2">£28</div>
+                        <div class="text-sm text-gray-500">45 minutes</div>
+                    </div>
+
+                    <div class="service-card rounded-2xl p-8 text-center">
+                        <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Hot Towel Shave</h3>
+                        <p class="text-gray-400 mb-6">Traditional straight razor shave with premium products</p>
+                        <div class="text-3xl font-bold text-primary mb-2">£25</div>
+                        <div class="text-sm text-gray-500">30 minutes</div>
+                    </div>
+
+                    <div class="service-card rounded-2xl p-8 text-center">
+                        <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Beard Grooming</h3>
+                        <p class="text-gray-400 mb-6">Expert beard trim, shape, and conditioning treatment</p>
+                        <div class="text-3xl font-bold text-primary mb-2">£20</div>
+                        <div class="text-sm text-gray-500">25 minutes</div>
+                    </div>
+
+                    <div class="service-card rounded-2xl p-8 text-center">
+                        <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Deluxe Package</h3>
+                        <p class="text-gray-400 mb-6">Haircut, hot towel shave, and beard grooming</p>
+                        <div class="text-3xl font-bold text-primary mb-2">£65</div>
+                        <div class="text-sm text-gray-500">90 minutes</div>
+                    </div>
+
+                    <div class="service-card rounded-2xl p-8 text-center">
+                        <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Hair Styling</h3>
+                        <p class="text-gray-400 mb-6">Professional styling with premium products</p>
+                        <div class="text-3xl font-bold text-primary mb-2">£15</div>
+                        <div class="text-sm text-gray-500">20 minutes</div>
+                    </div>
+
+                    <div class="service-card rounded-2xl p-8 text-center">
+                        <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Kids Haircut</h3>
+                        <p class="text-gray-400 mb-6">Gentle, patient service for children under 12</p>
+                        <div class="text-3xl font-bold text-primary mb-2">£18</div>
+                        <div class="text-sm text-gray-500">30 minutes</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Barbers Section -->
+        <section id="barbers" class="section-full flex items-center bg-gradient-to-br from-darker via-dark to-darker relative py-20 md:py-0">
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl md:text-6xl font-bold mb-6 text-white">
+                        Meet Our <span class="text-primary">Master Barbers</span>
+                    </h2>
+                    <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                        Our talented team of professionals brings years of experience and passion to every cut
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-4 gap-8 max-w-7xl mx-auto">
+                    <div class="barber-card rounded-2xl overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img src="https://placehold.co/300x300/1a1a1a/C9A961?text=James+Mitchell" alt="James Mitchell" class="w-full h-64 object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">James Mitchell</h3>
+                            <div class="text-primary text-sm mb-3">Head Barber - Man About Town</div>
+                            <p class="text-gray-400 text-sm">15+ years of experience in classic and contemporary cuts. Specializes in fades and beard sculpting.</p>
+                        </div>
+                    </div>
+
+                    <div class="barber-card rounded-2xl overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img src="https://placehold.co/300x300/1a1a1a/C9A961?text=Marcus+Rodriguez" alt="Marcus Rodriguez" class="w-full h-64 object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Marcus Rodriguez</h3>
+                            <div class="text-primary text-sm mb-3">Senior Barber - Man About Town</div>
+                            <p class="text-gray-400 text-sm">Master of traditional hot towel shaves and precision cuts. Trained in London's finest barbershops.</p>
+                        </div>
+                    </div>
+
+                    <div class="barber-card rounded-2xl overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img src="https://placehold.co/300x300/1a1a1a/C9A961?text=Daniel+Chen" alt="Daniel Chen" class="w-full h-64 object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Daniel Chen</h3>
+                            <div class="text-primary text-sm mb-3">Barber - Man About Town</div>
+                            <p class="text-gray-400 text-sm">Creative stylist with expertise in modern trends and classic gentleman's cuts. Award-winning barber.</p>
+                        </div>
+                    </div>
+
+                    <div class="barber-card rounded-2xl overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img src="https://placehold.co/300x300/1a1a1a/C9A961?text=Oliver+Thompson" alt="Oliver Thompson" class="w-full h-64 object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Oliver Thompson</h3>
+                            <div class="text-primary text-sm mb-3">Barber - Man About Town</div>
+                            <p class="text-gray-400 text-sm">Passionate about the craft with 8 years experience. Expert in skin fades and textured styles.</p>
+                        </div>
+                    </div>
+
+                    <div class="barber-card rounded-2xl overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img src="https://placehold.co/300x300/1a1a1a/C9A961?text=Sebastian+Wright" alt="Sebastian Wright" class="w-full h-64 object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Sebastian Wright</h3>
+                            <div class="text-primary text-sm mb-3">Head Barber - New London Barbers</div>
+                            <p class="text-gray-400 text-sm">12 years of experience with a focus on precision cuts and detailed beard work. Competition winner.</p>
+                        </div>
+                    </div>
+
+                    <div class="barber-card rounded-2xl overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img src="https://placehold.co/300x300/1a1a1a/C9A961?text=Alex+Johnson" alt="Alex Johnson" class="w-full h-64 object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Alex Johnson</h3>
+                            <div class="text-primary text-sm mb-3">Senior Barber - New London Barbers</div>
+                            <p class="text-gray-400 text-sm">Versatile stylist with expertise in both traditional and contemporary techniques. Client favorite.</p>
+                        </div>
+                    </div>
+
+                    <div class="barber-card rounded-2xl overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img src="https://placehold.co/300x300/1a1a1a/C9A961?text=Ryan+Martinez" alt="Ryan Martinez" class="w-full h-64 object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Ryan Martinez</h3>
+                            <div class="text-primary text-sm mb-3">Barber - New London Barbers</div>
+                            <p class="text-gray-400 text-sm">Specialist in modern fades and creative designs. Brings fresh energy and contemporary styles.</p>
+                        </div>
+                    </div>
+
+                    <div class="barber-card rounded-2xl overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img src="https://placehold.co/300x300/1a1a1a/C9A961?text=Ethan+Davies" alt="Ethan Davies" class="w-full h-64 object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Ethan Davies</h3>
+                            <div class="text-primary text-sm mb-3">Barber - New London Barbers</div>
+                            <p class="text-gray-400 text-sm">Detail-oriented barber with a passion for classic cuts. Known for exceptional customer service.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Locations Section -->
+        <section id="locations" class="section-full flex items-center bg-dark relative py-20 md:py-0">
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl md:text-6xl font-bold mb-6 text-white">
+                        Our <span class="text-primary">Locations</span>
+                    </h2>
+                    <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                        Two premium barbershops serving Chelmsford with excellence
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                    <!-- Man About Town -->
+                    <div class="location-card rounded-2xl overflow-hidden">
+                        <div class="map-container h-64">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2456.8!2d0.4796!3d51.7356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8c5e6e8e8e8e8%3A0x1234567890!2s62%20New%20London%20Rd%2C%20Chelmsford%20CM2%200PA!5e0!3m2!1sen!2suk!4v1234567890"
+                                width="100%"
+                                height="100%"
+                                style="border:0;"
+                                allowfullscreen=""
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-3xl font-bold text-white mb-4">Man About Town</h3>
+
+                            <div class="space-y-4 mb-6">
+                                <div class="flex items-start">
+                                    <svg class="w-6 h-6 text-primary mt-1 mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                    <div>
+                                        <div class="text-white font-semibold">Address</div>
+                                        <div class="text-gray-400">62 New London Rd<br/>Chelmsford, CM2 0PA</div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start">
+                                    <svg class="w-6 h-6 text-primary mt-1 mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                    </svg>
+                                    <div>
+                                        <div class="text-white font-semibold">Phone</div>
+                                        <a href="tel:01245354333" class="text-gray-400 hover:text-primary transition-colors">01245 354 333</a>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start">
+                                    <svg class="w-6 h-6 text-primary mt-1 mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <div>
+                                        <div class="text-white font-semibold">Hours</div>
+                                        <div class="text-gray-400 text-sm space-y-1">
+                                            <div>Mon-Wed: 9:00 AM - 6:00 PM</div>
+                                            <div>Thu: 9:00 AM - 8:00 PM</div>
+                                            <div>Fri-Sat: 9:00 AM - 6:00 PM</div>
+                                            <div>Sun: Closed</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="https://iframe-678.nearcut.com/book/shops/NKOYJS/" target="_blank" class="cta-button px-8 py-3 text-white rounded-full inline-block w-full text-center font-semibold">
+                                Book Now
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- New London Barbers -->
+                    <div class="location-card rounded-2xl overflow-hidden">
+                        <div class="map-container h-64">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2456.8!2d0.4796!3d51.7356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8c5e6e8e8e8e8%3A0x1234567890!2sChelmsford%2C%20UK!5e0!3m2!1sen!2suk!4v1234567890"
+                                width="100%"
+                                height="100%"
+                                style="border:0;"
+                                allowfullscreen=""
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-3xl font-bold text-white mb-4">New London Barbers</h3>
+
+                            <div class="space-y-4 mb-6">
+                                <div class="flex items-start">
+                                    <svg class="w-6 h-6 text-primary mt-1 mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                    <div>
+                                        <div class="text-white font-semibold">Address</div>
+                                        <div class="text-gray-400">Premium Location<br/>Chelmsford - Coming Soon</div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start">
+                                    <svg class="w-6 h-6 text-primary mt-1 mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                    </svg>
+                                    <div>
+                                        <div class="text-white font-semibold">Phone</div>
+                                        <a href="tel:01245354333" class="text-gray-400 hover:text-primary transition-colors">01245 354 333</a>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start">
+                                    <svg class="w-6 h-6 text-primary mt-1 mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <div>
+                                        <div class="text-white font-semibold">Hours</div>
+                                        <div class="text-gray-400 text-sm space-y-1">
+                                            <div>Mon-Wed: 9:00 AM - 6:00 PM</div>
+                                            <div>Thu: 9:00 AM - 8:00 PM</div>
+                                            <div>Fri-Sat: 9:00 AM - 6:00 PM</div>
+                                            <div>Sun: Closed</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="https://iframe-678.nearcut.com/book/shops/NKOYJS/" target="_blank" class="cta-button px-8 py-3 text-white rounded-full inline-block w-full text-center font-semibold">
+                                Book Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="section-full flex items-center bg-gradient-to-br from-darker via-dark to-darker relative py-20 md:py-0">
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl md:text-6xl font-bold mb-6 text-white">
+                        Our <span class="text-primary">Work</span>
+                    </h2>
+                    <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                        A glimpse into the artistry and precision that defines our craft
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto">
+                    <div class="gallery-item rounded-lg overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400&q=80" alt="Haircut 1" class="w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-item rounded-lg overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&q=80" alt="Barbershop" class="w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-item rounded-lg overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&q=80" alt="Haircut 2" class="w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-item rounded-lg overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=400&q=80" alt="Products" class="w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-item rounded-lg overflow-hidden h-64 md:col-span-2">
+                        <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=800&q=80" alt="Interior" class="w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-item rounded-lg overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=400&q=80" alt="Styling" class="w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-item rounded-lg overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1620331311520-246422fd82f9?w=400&q=80" alt="Tools" class="w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-item rounded-lg overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?w=400&q=80" alt="Beard grooming" class="w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-item rounded-lg overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1621607512214-68297480165e?w=400&q=80" alt="Shave" class="w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-item rounded-lg overflow-hidden h-64 md:col-span-2">
+                        <img src="https://images.unsplash.com/photo-1620331311657-403a5ae4e4c1?w=800&q=80" alt="Barber at work" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section-full flex items-center bg-gradient-to-br from-dark via-darker to-dark relative">
+            <div class="absolute inset-0 opacity-5">
+                <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23C9A961\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+            </div>
+
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <h2 class="text-5xl md:text-7xl font-bold mb-8 text-white">
+                    Ready to Look <span class="text-primary">Sharp?</span>
+                </h2>
+                <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto">
+                    Book your appointment today and experience the finest barbering in Chelmsford
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                    <a href="https://iframe-678.nearcut.com/book/shops/NKOYJS/" target="_blank" class="cta-button px-12 py-5 text-xl font-semibold text-white rounded-full inline-block">
+                        Book Now
+                    </a>
+                    <a href="tel:01245354333" class="px-12 py-5 text-xl font-semibold text-white border-2 border-white rounded-full inline-block hover:bg-white hover:text-dark transition-all">
+                        Call Us
+                    </a>
+                </div>
+
+                <!-- Footer -->
+                <div class="border-t border-gray-800 pt-12 mt-12">
+                    <div class="grid md:grid-cols-3 gap-8 mb-8 text-left md:text-center">
+                        <div>
+                            <h4 class="text-primary font-bold text-lg mb-4">Man About Town</h4>
+                            <p class="text-gray-400 text-sm">
+                                62 New London Rd<br/>
+                                Chelmsford, CM2 0PA<br/>
+                                Tel: 01245 354 333
+                            </p>
+                        </div>
+                        <div>
+                            <h4 class="text-primary font-bold text-lg mb-4">New London Barbers</h4>
+                            <p class="text-gray-400 text-sm">
+                                Premium Location<br/>
+                                Chelmsford - Coming Soon<br/>
+                                Tel: 01245 354 333
+                            </p>
+                        </div>
+                        <div>
+                            <h4 class="text-primary font-bold text-lg mb-4">Opening Hours</h4>
+                            <p class="text-gray-400 text-sm">
+                                Mon-Wed: 9:00 AM - 6:00 PM<br/>
+                                Thu: 9:00 AM - 8:00 PM<br/>
+                                Fri-Sat: 9:00 AM - 6:00 PM<br/>
+                                Sun: Closed
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center space-x-6 mb-8">
+                        <a href="#" class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary transition-all">
+                            <svg class="w-5 h-5 text-primary hover:text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary transition-all">
+                            <svg class="w-5 h-5 text-primary hover:text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary transition-all">
+                            <svg class="w-5 h-5 text-primary hover:text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <div class="text-gray-500 text-sm">
+                        <p>&copy; 2024 Man About Town & New London Barbers. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Mobile nav toggle
+        function toggleMobileNav() {
+            const navContent = document.getElementById('mobileNavContent');
+            navContent.classList.toggle('active');
+        }
+
+        // Smooth scroll and active navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navDots = document.querySelectorAll('.nav-dot');
+
+            function setActiveNav() {
+                let current = '';
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navDots.forEach(dot => {
+                    dot.classList.remove('active');
+                    if (dot.getAttribute('href') === `#${current}`) {
+                        dot.classList.add('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', setActiveNav);
+            setActiveNav();
+
+            // Parallax effect for hero
+            window.addEventListener('scroll', function() {
+                const parallax = document.querySelector('.parallax-bg');
+                if (parallax) {
+                    const scrolled = window.pageYOffset;
+                    const rate = scrolled * 0.5;
+                    parallax.style.transform = `translate3d(0px, ${rate}px, 0px)`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

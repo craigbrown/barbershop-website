@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Man About Town & New London Barbers | Premium Barbershops in Chelmsford</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+        :root {
+            --dark-bg: #212020;
+            --darker-bg: #1a1a1a;
+            --cream: #ccc9c2;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero-slide {
+            display: none;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .hero-slide.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .carousel-nav {
+            transition: all 0.3s ease;
+        }
+
+        .carousel-nav:hover {
+            background-color: rgba(204, 201, 194, 0.3);
+        }
+
+        .barber-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .barber-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .location-card {
+            transition: transform 0.3s ease;
+        }
+
+        .location-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-item img {
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .btn-primary {
+            background-color: var(--cream);
+            color: var(--dark-bg);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #e0ddd6;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(204, 201, 194, 0.3);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--cream);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.2);
+            color: var(--cream);
+        }
+    </style>
+</head>
+<body class="bg-[#212020] text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 bg-[#1a1a1a] bg-opacity-95 backdrop-blur-sm border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0">
+                    <h1 class="text-2xl md:text-3xl font-bold text-[#ccc9c2]">Man About Town</h1>
+                    <p class="text-xs text-gray-400">& New London Barbers</p>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-300 hover:text-[#ccc9c2] pb-1">Home</a>
+                    <a href="#about" class="nav-link text-gray-300 hover:text-[#ccc9c2] pb-1">About</a>
+                    <a href="#barbers" class="nav-link text-gray-300 hover:text-[#ccc9c2] pb-1">Barbers</a>
+                    <a href="#locations" class="nav-link text-gray-300 hover:text-[#ccc9c2] pb-1">Locations</a>
+                    <a href="#gallery" class="nav-link text-gray-300 hover:text-[#ccc9c2] pb-1">Gallery</a>
+                </div>
+                <a href="#booking" class="btn-primary px-6 py-3 rounded-md font-semibold">Book Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Carousel -->
+    <section id="home" class="relative h-screen">
+        <div class="hero-carousel h-full">
+            <!-- Slide 1 -->
+            <div class="hero-slide active h-full">
+                <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1920&h=1080&fit=crop');">
+                    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+                </div>
+                <div class="relative h-full flex items-center justify-center text-center px-4">
+                    <div class="max-w-4xl">
+                        <h2 class="text-5xl md:text-7xl font-bold text-[#ccc9c2] mb-6">Man About Town</h2>
+                        <p class="text-xl md:text-2xl text-gray-300 mb-8">& New London Barbers</p>
+                        <p class="text-lg md:text-xl text-gray-400 mb-10">Chelmsford's Premier Barbershop Experience</p>
+                        <a href="#booking" class="btn-primary px-8 py-4 rounded-md text-lg font-semibold inline-block">Book Your Appointment</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="hero-slide h-full">
+                <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1920&h=1080&fit=crop');">
+                    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+                </div>
+                <div class="relative h-full flex items-center justify-center text-center px-4">
+                    <div class="max-w-4xl">
+                        <h2 class="text-5xl md:text-7xl font-bold text-[#ccc9c2] mb-6">Expert Craftsmanship</h2>
+                        <p class="text-lg md:text-xl text-gray-300 mb-10">Traditional barbering meets modern style</p>
+                        <a href="#barbers" class="btn-primary px-8 py-4 rounded-md text-lg font-semibold inline-block">Meet Our Team</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="hero-slide h-full">
+                <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1920&h=1080&fit=crop');">
+                    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+                </div>
+                <div class="relative h-full flex items-center justify-center text-center px-4">
+                    <div class="max-w-4xl">
+                        <h2 class="text-5xl md:text-7xl font-bold text-[#ccc9c2] mb-6">Two Locations</h2>
+                        <p class="text-lg md:text-xl text-gray-300 mb-10">Serving Chelmsford with excellence</p>
+                        <a href="#locations" class="btn-primary px-8 py-4 rounded-md text-lg font-semibold inline-block">Find Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carousel Navigation -->
+        <button class="carousel-nav absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-4 rounded-full" onclick="changeSlide(-1)">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+        </button>
+        <button class="carousel-nav absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-4 rounded-full" onclick="changeSlide(1)">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+        </button>
+
+        <!-- Carousel Dots -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3">
+            <button class="carousel-dot w-3 h-3 rounded-full bg-[#ccc9c2]" onclick="goToSlide(0)"></button>
+            <button class="carousel-dot w-3 h-3 rounded-full bg-gray-500" onclick="goToSlide(1)"></button>
+            <button class="carousel-dot w-3 h-3 rounded-full bg-gray-500" onclick="goToSlide(2)"></button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-[#1a1a1a]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-[#ccc9c2] mb-6">About Us</h2>
+                <div class="w-24 h-1 bg-[#ccc9c2] mx-auto mb-8"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=800&h=600&fit=crop" alt="Barbershop Interior" class="rounded-lg shadow-2xl">
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold text-[#ccc9c2] mb-6">Chelmsford's Finest Barbershops</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed text-lg">
+                        With two premium locations in Chelmsford, Man About Town and New London Barbers have been serving the community with exceptional grooming services for years. Our commitment to traditional barbering techniques combined with contemporary styles ensures every client leaves looking and feeling their best.
+                    </p>
+                    <p class="text-gray-300 mb-6 leading-relaxed text-lg">
+                        Our experienced team of barbers pride themselves on attention to detail, personalized service, and creating a welcoming atmosphere where every visit is an experience. Whether you're after a classic cut, modern fade, or traditional hot towel shave, we've got you covered.
+                    </p>
+                    <p class="text-gray-300 leading-relaxed text-lg">
+                        Step into either of our shops and discover why we're Chelmsford's most trusted barbershops.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="py-20 bg-[#212020]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-[#ccc9c2] mb-6">Book Your Appointment</h2>
+                <div class="w-24 h-1 bg-[#ccc9c2] mx-auto mb-8"></div>
+                <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+                    Reserve your spot with our expert barbers. Walk-ins welcome, but booking ensures you get your preferred time.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Man About Town Booking -->
+                <div class="bg-[#1a1a1a] p-8 rounded-lg border border-gray-800 text-center">
+                    <h3 class="text-2xl font-bold text-[#ccc9c2] mb-4">Man About Town</h3>
+                    <p class="text-gray-400 mb-6">62 New London Rd, Chelmsford</p>
+                    <a href="https://iframe-678.nearcut.com/book/shops/NKOYJS/" target="_blank" class="btn-primary px-8 py-4 rounded-md text-lg font-semibold inline-block w-full">
+                        Book at Man About Town
+                    </a>
+                </div>
+
+                <!-- New London Barbers Booking -->
+                <div class="bg-[#1a1a1a] p-8 rounded-lg border border-gray-800 text-center">
+                    <h3 class="text-2xl font-bold text-[#ccc9c2] mb-4">New London Barbers</h3>
+                    <p class="text-gray-400 mb-6">Chelmsford City Centre</p>
+                    <a href="https://iframe-678.nearcut.com/book/shops/NKOYJS/" target="_blank" class="btn-primary px-8 py-4 rounded-md text-lg font-semibold inline-block w-full">
+                        Book at New London Barbers
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Barbers Section -->
+    <section id="barbers" class="py-20 bg-[#1a1a1a]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-[#ccc9c2] mb-6">Meet Our Barbers</h2>
+                <div class="w-24 h-1 bg-[#ccc9c2] mx-auto mb-8"></div>
+                <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+                    Our talented team of expert barbers are passionate about their craft and dedicated to giving you the perfect cut.
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Barber 1 -->
+                <div class="barber-card bg-[#212020] rounded-lg overflow-hidden border border-gray-800">
+                    <img src="https://placehold.co/300x300/1a1a1a/ccc9c2?text=James+Wilson" alt="James Wilson" class="w-full h-72 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-[#ccc9c2] mb-2">James Wilson</h3>
+                        <p class="text-sm text-gray-400 mb-3">Man About Town</p>
+                        <p class="text-gray-300 text-sm">Master barber with 15+ years experience. Specializes in classic cuts and traditional hot towel shaves.</p>
+                    </div>
+                </div>
+
+                <!-- Barber 2 -->
+                <div class="barber-card bg-[#212020] rounded-lg overflow-hidden border border-gray-800">
+                    <img src="https://placehold.co/300x300/1a1a1a/ccc9c2?text=Marcus+Reed" alt="Marcus Reed" class="w-full h-72 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-[#ccc9c2] mb-2">Marcus Reed</h3>
+                        <p class="text-sm text-gray-400 mb-3">Man About Town</p>
+                        <p class="text-gray-300 text-sm">Expert in modern fades and contemporary styling. Known for precision and attention to detail.</p>
+                    </div>
+                </div>
+
+                <!-- Barber 3 -->
+                <div class="barber-card bg-[#212020] rounded-lg overflow-hidden border border-gray-800">
+                    <img src="https://placehold.co/300x300/1a1a1a/ccc9c2?text=Daniel+Foster" alt="Daniel Foster" class="w-full h-72 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-[#ccc9c2] mb-2">Daniel Foster</h3>
+                        <p class="text-sm text-gray-400 mb-3">Man About Town</p>
+                        <p class="text-gray-300 text-sm">Creative stylist who excels at beard sculpting and grooming. Passionate about men's grooming.</p>
+                    </div>
+                </div>
+
+                <!-- Barber 4 -->
+                <div class="barber-card bg-[#212020] rounded-lg overflow-hidden border border-gray-800">
+                    <img src="https://placehold.co/300x300/1a1a1a/ccc9c2?text=Thomas+Blake" alt="Thomas Blake" class="w-full h-72 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-[#ccc9c2] mb-2">Thomas Blake</h3>
+                        <p class="text-sm text-gray-400 mb-3">New London Barbers</p>
+                        <p class="text-gray-300 text-sm">Award-winning barber specializing in skin fades and textured crops. 10 years of experience.</p>
+                    </div>
+                </div>
+
+                <!-- Barber 5 -->
+                <div class="barber-card bg-[#212020] rounded-lg overflow-hidden border border-gray-800">
+                    <img src="https://placehold.co/300x300/1a1a1a/ccc9c2?text=Ryan+Mitchell" alt="Ryan Mitchell" class="w-full h-72 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-[#ccc9c2] mb-2">Ryan Mitchell</h3>
+                        <p class="text-sm text-gray-400 mb-3">New London Barbers</p>
+                        <p class="text-gray-300 text-sm">Traditional barber with modern techniques. Specializes in pompadours and vintage styles.</p>
+                    </div>
+                </div>
+
+                <!-- Barber 6 -->
+                <div class="barber-card bg-[#212020] rounded-lg overflow-hidden border border-gray-800">
+                    <img src="https://placehold.co/300x300/1a1a1a/ccc9c2?text=Alex+Turner" alt="Alex Turner" class="w-full h-72 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-[#ccc9c2] mb-2">Alex Turner</h3>
+                        <p class="text-sm text-gray-400 mb-3">New London Barbers</p>
+                        <p class="text-gray-300 text-sm">Young talent with fresh perspective. Expert in contemporary cuts and creative styling.</p>
+                    </div>
+                </div>
+
+                <!-- Barber 7 -->
+                <div class="barber-card bg-[#212020] rounded-lg overflow-hidden border border-gray-800">
+                    <img src="https://placehold.co/300x300/1a1a1a/ccc9c2?text=Samuel+Cross" alt="Samuel Cross" class="w-full h-72 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-[#ccc9c2] mb-2">Samuel Cross</h3>
+                        <p class="text-sm text-gray-400 mb-3">New London Barbers</p>
+                        <p class="text-gray-300 text-sm">Versatile barber comfortable with all styles. Known for excellent customer service and consistency.</p>
+                    </div>
+                </div>
+
+                <!-- Barber 8 -->
+                <div class="barber-card bg-[#212020] rounded-lg overflow-hidden border border-gray-800">
+                    <img src="https://placehold.co/300x300/1a1a1a/ccc9c2?text=Oliver+Hayes" alt="Oliver Hayes" class="w-full h-72 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-[#ccc9c2] mb-2">Oliver Hayes</h3>
+                        <p class="text-sm text-gray-400 mb-3">Man About Town</p>
+                        <p class="text-gray-300 text-sm">Senior barber and mentor. Specializes in executive cuts and professional styling for business clients.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations Section -->
+    <section id="locations" class="py-20 bg-[#212020]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-[#ccc9c2] mb-6">Our Locations</h2>
+                <div class="w-24 h-1 bg-[#ccc9c2] mx-auto mb-8"></div>
+                <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+                    Visit us at either of our two convenient locations in Chelmsford.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Man About Town Location -->
+                <div class="location-card bg-[#1a1a1a] rounded-lg overflow-hidden border border-gray-800">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-[#ccc9c2] mb-4">Man About Town</h3>
+
+                        <div class="space-y-4 mb-6">
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 text-[#ccc9c2] mt-1 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                                <div>
+                                    <p class="text-gray-300">62 New London Rd</p>
+                                    <p class="text-gray-300">Chelmsford, CM2 0PA</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center">
+                                <svg class="w-6 h-6 text-[#ccc9c2] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                </svg>
+                                <a href="tel:01245354333" class="text-gray-300 hover:text-[#ccc9c2]">01245 354 333</a>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-gray-800 pt-6 mb-6">
+                            <h4 class="text-lg font-semibold text-[#ccc9c2] mb-3">Opening Hours</h4>
+                            <div class="space-y-2 text-gray-300">
+                                <div class="flex justify-between">
+                                    <span>Monday - Wednesday</span>
+                                    <span>9:00 - 18:00</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Thursday</span>
+                                    <span>9:00 - 20:00</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Friday - Saturday</span>
+                                    <span>9:00 - 18:00</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Sunday</span>
+                                    <span class="text-red-400">Closed</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="h-64">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2456.123456789!2d0.479167!3d51.735833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8c0d7d7d7d7d7%3A0x7d7d7d7d7d7d7d7d!2s62%20New%20London%20Rd%2C%20Chelmsford%20CM2%200PA!5e0!3m2!1sen!2suk!4v1234567890"
+                            width="100%"
+                            height="100%"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- New London Barbers Location -->
+                <div class="location-card bg-[#1a1a1a] rounded-lg overflow-hidden border border-gray-800">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-[#ccc9c2] mb-4">New London Barbers</h3>
+
+                        <div class="space-y-4 mb-6">
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 text-[#ccc9c2] mt-1 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                                <div>
+                                    <p class="text-gray-300">45 High Street</p>
+                                    <p class="text-gray-300">Chelmsford, CM1 1DH</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center">
+                                <svg class="w-6 h-6 text-[#ccc9c2] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                </svg>
+                                <a href="tel:01245123456" class="text-gray-300 hover:text-[#ccc9c2]">01245 123 456</a>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-gray-800 pt-6 mb-6">
+                            <h4 class="text-lg font-semibold text-[#ccc9c2] mb-3">Opening Hours</h4>
+                            <div class="space-y-2 text-gray-300">
+                                <div class="flex justify-between">
+                                    <span>Monday - Wednesday</span>
+                                    <span>9:00 - 18:00</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Thursday</span>
+                                    <span>9:00 - 20:00</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Friday - Saturday</span>
+                                    <span>9:00 - 18:00</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Sunday</span>
+                                    <span class="text-red-400">Closed</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="h-64">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2456.234567890!2d0.469444!3d51.730556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8c0e0e0e0e0e0%3A0xe0e0e0e0e0e0e0e0!2s45%20High%20Street%2C%20Chelmsford%20CM1%201DH!5e0!3m2!1sen!2suk!4v1234567891"
+                            width="100%"
+                            height="100%"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-[#1a1a1a]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-[#ccc9c2] mb-6">Our Work</h2>
+                <div class="w-24 h-1 bg-[#ccc9c2] mx-auto mb-8"></div>
+                <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+                    Take a look at some of our finest work and the atmosphere in our barbershops.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="gallery-item rounded-lg overflow-hidden aspect-square">
+                    <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400&h=400&fit=crop" alt="Haircut" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden aspect-square">
+                    <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&h=400&fit=crop" alt="Barbershop" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden aspect-square">
+                    <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=400&h=400&fit=crop" alt="Haircut Style" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden aspect-square">
+                    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&h=400&fit=crop" alt="Barber at Work" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden aspect-square">
+                    <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=400&h=400&fit=crop" alt="Barbershop Interior" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden aspect-square">
+                    <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=400&h=400&fit=crop" alt="Classic Cut" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden aspect-square">
+                    <img src="https://images.unsplash.com/photo-1598387846856-776ec5a87f2f?w=400&h=400&fit=crop" alt="Beard Trim" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden aspect-square">
+                    <img src="https://images.unsplash.com/photo-1620331311520-246422fd82f9?w=400&h=400&fit=crop" alt="Hair Styling" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#212020] border-t border-gray-800 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <!-- Brand -->
+                <div>
+                    <h3 class="text-2xl font-bold text-[#ccc9c2] mb-4">Man About Town</h3>
+                    <p class="text-sm text-gray-400 mb-4">& New London Barbers</p>
+                    <p class="text-gray-300">Chelmsford's premier barbershops offering expert cuts, traditional shaves, and modern styling.</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold text-[#ccc9c2] mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-300 hover:text-[#ccc9c2] transition">Home</a></li>
+                        <li><a href="#about" class="text-gray-300 hover:text-[#ccc9c2] transition">About</a></li>
+                        <li><a href="#barbers" class="text-gray-300 hover:text-[#ccc9c2] transition">Our Barbers</a></li>
+                        <li><a href="#locations" class="text-gray-300 hover:text-[#ccc9c2] transition">Locations</a></li>
+                        <li><a href="#booking" class="text-gray-300 hover:text-[#ccc9c2] transition">Book Now</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact & Social -->
+                <div>
+                    <h4 class="text-lg font-semibold text-[#ccc9c2] mb-4">Connect With Us</h4>
+                    <div class="space-y-3 mb-6">
+                        <p class="text-gray-300">
+                            <span class="font-semibold">Man About Town:</span><br>
+                            <a href="tel:01245354333" class="hover:text-[#ccc9c2] transition">01245 354 333</a>
+                        </p>
+                        <p class="text-gray-300">
+                            <span class="font-semibold">New London Barbers:</span><br>
+                            <a href="tel:01245123456" class="hover:text-[#ccc9c2] transition">01245 123 456</a>
+                        </p>
+                    </div>
+
+                    <div class="flex space-x-4">
+                        <a href="#" class="social-icon text-gray-300 hover:text-[#ccc9c2]" aria-label="Facebook">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon text-gray-300 hover:text-[#ccc9c2]" aria-label="Instagram">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon text-gray-300 hover:text-[#ccc9c2]" aria-label="Twitter">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2024 Man About Town & New London Barbers. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Carousel JavaScript -->
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        let autoPlayInterval;
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => {
+                dot.classList.remove('bg-[#ccc9c2]');
+                dot.classList.add('bg-gray-500');
+            });
+
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.remove('bg-gray-500');
+            dots[currentSlide].classList.add('bg-[#ccc9c2]');
+        }
+
+        function changeSlide(n) {
+            clearInterval(autoPlayInterval);
+            showSlide(currentSlide + n);
+            startAutoPlay();
+        }
+
+        function goToSlide(n) {
+            clearInterval(autoPlayInterval);
+            showSlide(n);
+            startAutoPlay();
+        }
+
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(() => {
+                showSlide(currentSlide + 1);
+            }, 5000);
+        }
+
+        // Initialize
+        showSlide(0);
+        startAutoPlay();
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

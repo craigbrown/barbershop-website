@@ -130,7 +130,7 @@
 <body class="bg-[#212020] text-white">
 
     <!-- Navigation -->
-    <nav class="fixed w-full top-0 z-50 backdrop-blur-sm" style="background-color: rgba(0,0,0,0.3);">
+    <nav class="fixed w-full top-0 z-50 backdrop-blur-sm" style="background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 80%, rgba(0,0,0,0) 100%);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0">
@@ -161,10 +161,12 @@
                     New London Barbers
                 </h2>
                 <p class="text-lg md:text-xl text-gray-300 mb-12">Chelmsford's Premier Barbershop Experience</p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <a href="https://iframe-678.nearcut.com/book/shops/NKOYJS/" target="_blank" class="btn-primary px-8 py-4 rounded-md text-lg font-semibold inline-block w-64">Book at Man About Town</a>
-                    <a href="https://iframe-678.nearcut.com/book/shops/NKOYJS/" target="_blank" class="btn-primary px-8 py-4 rounded-md text-lg font-semibold inline-block w-64">Book at New London Barbers</a>
-                </div>
+                <a href="#locations" class="btn-primary px-10 py-4 rounded-md text-lg font-semibold inline-block">Book Now</a>
+            </div>
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+                <svg class="w-8 h-8 text-[#ccc9c2] animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
             </div>
         </div>
     </section>
@@ -367,7 +369,7 @@
                 <h2 class="text-4xl md:text-5xl font-bold text-[#ccc9c2] mb-6">Our Locations</h2>
                 <div class="w-24 h-1 bg-[#ccc9c2] mx-auto mb-8"></div>
                 <p class="text-gray-300 text-lg max-w-2xl mx-auto">
-                    Visit us at either of our two convenient locations in Chelmsford.
+                    Reserve your spot with our expert barbers. Our barbershops are appointment-based, so please book ahead to avoid disappointment.
                 </p>
             </div>
 
@@ -375,6 +377,10 @@
                 <!-- Man About Town Location -->
                 <div class="location-card bg-[#1a1a1a] rounded-lg overflow-hidden border border-gray-800">
                     <div class="p-8">
+                        <a href="https://iframe-678.nearcut.com/book/shops/NKOYJS/" target="_blank" class="btn-primary px-6 py-3 rounded-md font-semibold inline-block w-full text-center mb-6">
+                            Book at Man About Town
+                        </a>
+
                         <h3 class="text-2xl font-bold text-[#ccc9c2] mb-4">Man About Town</h3>
 
                         <div class="space-y-4 mb-6">
@@ -436,6 +442,10 @@
                 <!-- New London Barbers Location -->
                 <div class="location-card bg-[#1a1a1a] rounded-lg overflow-hidden border border-gray-800">
                     <div class="p-8">
+                        <a href="https://iframe-678.nearcut.com/book/shops/NKOYJS/" target="_blank" class="btn-primary px-6 py-3 rounded-md font-semibold inline-block w-full text-center mb-6">
+                            Book at New London Barbers
+                        </a>
+
                         <h3 class="text-2xl font-bold text-[#ccc9c2] mb-4">New London Barbers</h3>
 
                         <div class="space-y-4 mb-6">
@@ -492,39 +502,6 @@
                             referrerpolicy="no-referrer-when-downgrade">
                         </iframe>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Booking Section -->
-    <section id="booking" class="py-20 bg-[#212020]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-[#ccc9c2] mb-6">Book Your Appointment</h2>
-                <div class="w-24 h-1 bg-[#ccc9c2] mx-auto mb-8"></div>
-                <p class="text-gray-300 text-lg max-w-2xl mx-auto">
-                    Reserve your spot with our expert barbers. Walk-ins welcome, but booking ensures you get your preferred time.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                <!-- Man About Town Booking -->
-                <div class="bg-[#1a1a1a] p-8 rounded-lg border border-gray-800 text-center">
-                    <h3 class="text-2xl font-bold text-[#ccc9c2] mb-4">Man About Town</h3>
-                    <p class="text-gray-400 mb-6">62 New London Rd, Chelmsford</p>
-                    <a href="https://iframe-678.nearcut.com/book/shops/NKOYJS/" target="_blank" class="btn-primary px-8 py-4 rounded-md text-lg font-semibold inline-block w-full">
-                        Book at Man About Town
-                    </a>
-                </div>
-
-                <!-- New London Barbers Booking -->
-                <div class="bg-[#1a1a1a] p-8 rounded-lg border border-gray-800 text-center">
-                    <h3 class="text-2xl font-bold text-[#ccc9c2] mb-4">New London Barbers</h3>
-                    <p class="text-gray-400 mb-6">Chelmsford City Centre</p>
-                    <a href="https://iframe-678.nearcut.com/book/shops/NKOYJS/" target="_blank" class="btn-primary px-8 py-4 rounded-md text-lg font-semibold inline-block w-full">
-                        Book at New London Barbers
-                    </a>
                 </div>
             </div>
         </div>
